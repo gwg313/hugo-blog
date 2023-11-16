@@ -1,6 +1,6 @@
 +++
 title = 'Mastering Development Workflows with Nix: Part 2 - Flakes & DevShells'
-date = 2023-11-11T13:20:58-05:00
+date = 2023-11-12T13:20:58-05:00
 #draft = true
 +++
 

@@ -1,6 +1,6 @@
 +++
-title = 'Mastering Development Workflows with Nix: Part 3 - Automating Builds with Nix and Continuous Integration'
-date = 2023-11-14T16:54:55-05:00
+title = 'Mastering Development Workflows with Nix: Part 4 - Automating Builds with Nix and Continuous Integration'
+date = 2023-11-15T16:54:55-05:00
 #draft = true
 +++
 

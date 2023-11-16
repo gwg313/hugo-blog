@@ -1,6 +1,6 @@
 +++
 title = 'Mastering Development Workflows with Nix: Part 1 - An Introduction'
-date = 2023-11-16T13:43:20-05:00
+date = 2023-11-11T13:43:20-05:00
 draft = false
 +++
 
