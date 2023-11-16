@@ -15,11 +15,29 @@ In this blog series, we explore the capabilities of Nix, a versatile tool poised
 Nix is not your everyday toolkit—it's more like a multi-tool designed to tackle the complexity of software development from various angles. Picture it as a language, a package manager, and even an operating system, all rolled into one.
 
 ## The Nix Language:
-Firstly, Nix is a language in its own right. It allows you to express your software environment needs in a clear and concise manner. With the Nix language, you're not just giving commands; you're crafting a blueprint for your development setup. This declarative approach means you specify what you want, and Nix ensures that your wishes are carried out consistently.
+Firstly, Nix is a language in its own right. It is a declaritive, pure, functional programming language that is the basis of the Nix operating system and package manager. It allows you to express your software environment needs in a clear and concise manner. With the Nix language, you're not just giving commands; you're crafting a blueprint for your development setup. This declarative approach means you specify what you want, and Nix ensures that your wishes are carried out consistently. You can read more about the nix language [here](https://nixos.org/manual/nix/stable/language/).
 
 ## Precision in Package Management:
+Nix is a functional package manager that aims to provide a reliable and reproducible way to manage software environments. It treats packages as purely functional units, meaning that a package and its dependencies are isolated from the rest of the system, preventing conflicts and ensuring consistent behavior.
 
-Nix stands as an unparalleled package manager, diverging from conventional practices of simply fetching the latest library versions. What sets Nix apart is its meticulous tracking of each dependency, creating a highly specific and reproducible environment. In Nix, dependencies are not left to chance; they are precisely defined, offering a level of reliability and consistency that traditional approaches often struggle to achieve.
+### Functional Package Management:
+Nix uses a purely functional approach, where packages are built from source and installed into isolated environments. Each package has a unique identifier based on its inputs, ensuring that dependencies are precisely defined.
+### Immutable Packages:
+Once a package is built, it is never changed. This immutability guarantees that the environment remains stable over time, making it easier to reproduce and share environments across different machines.
+### Atomic Upgrades and Rollbacks:
+Nix supports atomic upgrades and rollbacks, allowing users to switch between different configurations and package versions with ease. This is especially useful for system-wide changes and updates.
+
+### Benefits over traditional package managers:
+
+#### Reproducibility:
+Nix ensures that software environments can be precisely reproduced across different systems. This is crucial for development and deployment, as it minimizes "it works on my machine" issues.
+#### Isolation:
+Packages and their dependencies are isolated from the rest of the system, reducing conflicts and avoiding interference with system libraries and configurations.
+#### Atomic Operations:
+The ability to perform atomic upgrades and rollbacks enhances system reliability. If an upgrade fails or causes issues, it can be quickly reverted to a known, working state.
+
+#### Declarative Configuration: 
+Nix uses a declarative language for describing software configurations, making it easier to manage and share configurations across different machines.
 
 ## Nix: Mastering Your OS Blueprint
 
@@ -41,18 +59,19 @@ As we navigate the depths of the Nix toolkit, our focus turns to a powerful duo�
 
 ## Flakes
 
-Flakes are just a nix file that describes something, It could be a nixos system configuration. It could be a development environment or a build process. Flakes in Nix empower developers to accomplish several critical tasks with ease. They allow you to define and manage dependencies for projects, ensuring version consistency and reproducibility across different environments. With Flakes, you can encapsulate complex configurations, including multiple packages and settings, into a single, comprehensible entity. This modular structure enables effortless sharing and reuse of configurations between projects, fostering a streamlined and efficient development process. Additionally, Flakes facilitate the creation of development environments tailored to specific projects, offering an isolated and controlled space for testing and experimentation. Overall, Flakes provide a robust foundation for orchestrating complex Nix workflows, enabling developers to architect, version, and share their projects with unparalleled precision and efficiency
+Flakes are just a nix file that describes your desired result, You can think of it kind of like a docker-compose file, it describebes what the result should look like not the steps to achieve it. It could be a nixos system configuration. It could be a development environment or a build process. Flakes in Nix empower developers to accomplish several critical tasks with ease. They allow you to define and manage dependencies for projects, ensuring version consistency and reproducibility across different environments. With Flakes, you can encapsulate complex configurations, including multiple packages and settings, into a single, comprehensible entity. This modular structure enables effortless sharing and reuse of configurations between projects, fostering a streamlined and efficient development process. Additionally, Flakes facilitate the creation of development environments tailored to specific projects, offering an isolated and controlled space for testing and experimentation. Overall, Flakes provide a robust foundation for orchestrating complex Nix workflows, enabling developers to architect, version, and share their projects with unparalleled precision and efficiency
 
 ## devShell: A Tailored Workspace
-devShell provides more than just isolation—it tailors a project-specific environment effortlessly. Say goodbye to dependency headaches; with devShell, you step into a controlled space designed explicitly for your project. No more surprises during development or debugging, just a clean, isolated environment ready for action.
+A devShell provides us an isolated shell environment for our project, it contains only the packages you want for the project. When used within a nix flake we get a lock file pinning each package to a sha, ensuring that we always get the same resulting environtment and build tools. DevShell provides more than just isolation—it tailors a project-specific environment effortlessly. Say goodbye to dependency headaches; with devShell, you step into a controlled space designed explicitly for your project. No more surprises during development or debugging, just a clean, isolated environment ready for action.
 
 ## devShell + Flakes
+Adding our devShell within our flake gives up access to the many benefits flakes and the Nix package manager provides, such as reproducibility and and the ability to version control our environment. As we will go over in part 2 we can also use the flake to build our project, this means we can encompass not only a project specific development environtment within the flake but also the build instructions.
 
 The integration of devShell with Flakes is all about precision in Nix workflows. In a Flakes context, devShell moves beyond basic isolation, offering meticulous organization and versioning for project environments. This streamlined alliance ensures controlled, reproducible setups, a stark departure from the uncertainties of traditional dependency management. The bottom line: Flakes and devShell together bring clarity, control, and efficiency to Nix development, making it a practical powerhouse in contrast to traditional approach
 
 ## Creating a Simple devShell within a Flake:
 
-So to get a better idea for what this all means in practice, lets construct an example(You will need the nix package manager installed).
+So to get a better idea for how this works in practice, lets construct an example(You will need the nix package manager installed).
 
 ### Step 1: Project Setup:
 Navigate to your project directory.
@@ -99,7 +118,7 @@ Create a file named flake.nix in your project directory.
     );
 }
 ```
-Lets go over the compontents
+Lets briefly cover the components,
 
 1. **Nixpkgs Input:**
    The `inputs.nixpkgs.url` specifies the Nixpkgs Flake input, referencing the GitHub repository and setting the reference to `nixos-unstable`.
@@ -130,10 +149,10 @@ Run the following command to activate the devShell environment:
 ```bash
 nix develop
 ```
-This will give us access to the packages listed in the devShell buid inputs(go).
+This will give us access to the packages listed in the devShell buid inputs(in this case just go). You can find additional packages [here](https://search.nixos.org/packages) by simply adding the name in the buildInputs(these are space seperated values).
 
 ### Step 4: Go Project Setup:
-Let's create a basic main.go file:
+Let's create a basic main.go file, and remember you do not need go installed on your system, it is provided as a part of our new devShell environment:
 ```go
 package main
 
