@@ -150,7 +150,8 @@ jobs:
 In the pursuit of a reproducible development environment, we've embraced Nix to ensure that our GitHub Actions workflow and local development environments mirror each other. This alignment guarantees that if our code builds and tests successfully on our machine, it will do the same in our CI pipeline.
 
 Yet, when working locally, it's not always apparent which commands to run to simulate the CI process accurately. To bridge this gap and elevate our confidence in local development, we can enhance our Nix Flake by incorporating scripts.
-Scripting for Local Consistency
+
+## Scripting for Local Consistency
 
 Scripts provide a clear and concise way to encapsulate the steps required for linting, building, and testing our Go project. By embedding these scripts within our Flake, we create a unified interface for developers. Now, instead of searching through CI workflows, one can simply run a predefined script to ensure local compatibility.
 
@@ -454,4 +455,5 @@ With our Nix Flake configured to streamline our CI workflow, local development b
 
 In this second part, we explored the intricacies of the Nix Flake, focusing on building our Go project with confidence and reliability. By leveraging Nix, we not only achieved a reproducible development environment but also ensured consistency in our CI workflow. It's worth noting that Nix Flakes extend beyond managing builds, offering a versatile and declarative approach to various aspects of software development. Stay tuned for upcoming articles where we'll delve into more advanced use cases of Nix Flakes, unlocking their full potential.
 
-You can find code [here](https://github.com/gwg313/blog-go-example)
+You can find code used in these examples [here](https://github.com/gwg313/blog-go-example).
+

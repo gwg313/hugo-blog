@@ -115,7 +115,31 @@ Create a file named flake.nix in your project directory.
     );
 }
 ```
-In summarizing key elements, the description provides a brief overview of the Flake. The inputs.nixpkgs.url specifies the Nixpkgs Flake input, referencing the GitHub repository and setting the reference to nixos-unstable. The outputs function defines the Flake's outputs, utilizing nixpkgs as an argument. The withSystem function takes a function f and applies it to a list of systems, including "x86_64-linux," "x86_64-darwin," "aarch64-linux," and "aarch64-darwin." It employs fold and recursiveUpdate to combine results, facilitating usage on multiple system architectures, such as Apple Silicon. Within the withSystem function, system represents the individual system processed in the loop. The pkgs = nixpkgs.legacyPackages.${system} extracts legacy packages for the specified system. devShells.${system} defines a section for the devShell of the specified system, potentially encompassing multiple environments, although in this instance, only a default environment is provided. The default = pkgs.mkShell { buildInputs = with pkgs; [ go ]; } creates a devShell for the specified system with Go as a build input
+Lets go over the compontents
+
+1. **Nixpkgs Input:**
+   The `inputs.nixpkgs.url` specifies the Nixpkgs Flake input, referencing the GitHub repository and setting the reference to `nixos-unstable`.
+
+2. **Outputs Definition:**
+   The `outputs` function defines the Flake's outputs, utilizing `nixpkgs` as an argument.
+
+3. **withSystem Function:**
+   The `withSystem` function takes a function `f` and applies it to a list of systems, including "x86_64-linux," "x86_64-darwin," "aarch64-linux," and "aarch64-darwin."
+
+4. **Fold and recursiveUpdate:**
+   It employs `fold` and `recursiveUpdate` to combine results, facilitating usage on multiple system architectures, such as Apple Silicon.
+
+5. **System Representation:**
+   Within the `withSystem` function, `system` represents the individual system processed in the loop.
+
+6. **Legacy Packages Extraction:**
+   The `pkgs = nixpkgs.legacyPackages.${system}` extracts legacy packages for the specified system.
+
+7. **devShell Definition:**
+   `devShells.${system}` defines a section for the `devShell` of the specified system, potentially encompassing multiple environments. In this instance, only a default environment is provided.
+
+8. **Default devShell with Go:**
+   The `default = pkgs.mkShell { buildInputs = with pkgs; [ go ]; }` creates a `devShell` for the specified system with Go as a build input.
 
 ### Step 4: Activating the devShell:
 Run the following command to activate the devShell:
