@@ -1,5 +1,5 @@
 +++
-title = 'Mastering Development Workflows with Nix: Part 2 - Building Your Project with Nix'
+title = 'Mastering Development Workflows with Nix: Part 4 - Building Your Project with Nix'
 date = 2023-11-14T13:17:00-05:00
 #draft = true
 +++
@@ -107,7 +107,7 @@ In essence, the Flake acts as a blueprint, capturing not only the explicit depen
 
 ## Conclusion
 
-In conclusion, our journey through Part 2 has shed light on the formidable capabilities of Nix Flakes, particularly in the realm of building projects. The meticulous orchestration of dependencies, configurations, and the build process within the Flake guarantees a reproducible and consistent development environment specifically tailored for constructing our Go project.
+In conclusion, our journey through Part 3 has shed light on the formidable capabilities of Nix Flakes, particularly in the realm of building projects. The meticulous orchestration of dependencies, configurations, and the build process within the Flake guarantees a reproducible and consistent development environment specifically tailored for constructing our Go project.
 
 Nix Flakes, in this context, emerge as a powerful tool for streamlining the sharing and reproduction of development environments across different systems during the build phase. Whether collaborating with team members, deploying applications to diverse servers, or transitioning between personal machines, the Flake acts as a reliable blueprint, ensuring that the build process is identical under various conditions.
 

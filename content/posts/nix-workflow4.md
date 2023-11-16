@@ -4,7 +4,7 @@ date = 2023-11-14T16:54:55-05:00
 #draft = true
 +++
 
-In the previous parts, we've set up a reproducible development environment for our Go project using Nix. Now, let's take it a step further by integrating Continuous Integration (CI) into the mix. CI ensures that our project is automatically built, tested, and validated whenever changes are pushed to the repository.
+In the previous posts, we've set up a reproducible development environment for our Go project using Nix. Now, let's take it a step further by integrating Continuous Integration (CI) into the mix. CI ensures that our project is automatically built, tested, and validated whenever changes are pushed to the repository.
 
 ## Embracing Nix in Continuous Integration: Ensuring Reproducibility and More
 
