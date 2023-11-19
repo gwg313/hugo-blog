@@ -4,7 +4,7 @@ date = 2023-11-15T16:54:55-05:00
 #draft = true
 +++
 
-In the previous posts, we've set up a reproducible development environment for our Go project using Nix. Now, let's take it a step further by integrating Continuous Integration (CI) into the mix. CI ensures that our project is automatically built, tested, and validated whenever changes are pushed to the repository.
+In the previous posts, we've set up a reproducible development environment and build process for our Go project using Nix. Now, let's take it a step further by integrating Continuous Integration (CI) into the mix. CI ensures that our project is automatically built, tested, and validated whenever changes are pushed to the repository.
 
 ## Embracing Nix in Continuous Integration: Ensuring Reproducibility and More
 
@@ -49,7 +49,7 @@ on:
       - main
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -67,7 +67,7 @@ In the world of Go development, maintaining a clean and consistent codebase is c
 
 ### Why golint?
 
-golint is a linter for Go source code that checks for common style mistakes and deviations from the Go coding conventions. By incorporating golint into your CI pipeline, you can catch potential issues early in the development process, ensuring a higher level of code quality and adherence to best practices.
+Golint is a linter for Go source code that checks for common style mistakes and deviations from the Go coding conventions. By incorporating golint into your CI pipeline, you can catch potential issues early in the development process, ensuring a higher level of code quality and adherence to best practices.
 Updating Your CI Workflow
 
 First lets update the devShell in our flake to include golint.
@@ -119,7 +119,7 @@ First lets update the devShell in our flake to include golint.
     );
 }
 ```
-Now if we enter our devShell we can run golint manually as usual. But we want to run it to run on github. to do that lets update our build.yml
+Now if we enter our devShell we can run golint manually as usual. However we want to run it to run on github. To do that lets update our build.yml
 
 ```yaml
 name: Nix Actions Example
@@ -130,7 +130,7 @@ on:
       - main
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -243,7 +243,7 @@ The flake will now look like this
 }
 ```
 
-With this configuration, anyone using the Nix Flake to enter the development environment (devShell) will not only have access to Go and golint but can also just call our new script using `my-lint-script`(this would be more usefull if we used more flags or a more complex process).
+With this configuration, anyone using the Nix Flake to enter the development environment (devShell) will not only have access to Go and golint but can also just call our new script using `my-lint-script`.
 
 We can now call this script in our github workflow much like we did above but first lets add some unit tests so we can run them too.
 
@@ -372,7 +372,7 @@ Lastly while this works we dont want to have to call a script for each individua
 the resulting flake should look like this
 ```nix
 {
-  description = "a simple go flake";
+  description = "A simple go flake";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
   outputs =
@@ -453,7 +453,7 @@ With our Nix Flake configured to streamline our CI workflow, local development b
 
 ## Conclusion
 
-In this second part, we explored the intricacies of the Nix Flake, focusing on building our Go project with confidence and reliability. By leveraging Nix, we not only achieved a reproducible development environment but also ensured consistency in our CI workflow. It's worth noting that Nix Flakes extend beyond managing builds, offering a versatile and declarative approach to various aspects of software development. Stay tuned for upcoming articles where we'll delve into more advanced use cases of Nix Flakes, unlocking their full potential.
+In this final part, we explored the intricacies of the Nix Flake, focusing on setting up our CI. By leveraging Nix, we not only achieved a reproducible development environment but also ensured consistency in our CI workflow. It's worth noting that Nix Flakes extend beyond managing builds, offering a versatile and declarative approach to various aspects of software development. Stay tuned for upcoming articles where we'll delve into more advanced use cases of Nix Flakes, unlocking their full potential.
 
 You can find code used in these examples [here](https://github.com/gwg313/blog-go-example).
 

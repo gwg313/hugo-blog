@@ -4,11 +4,11 @@ date = 2023-11-13T13:17:00-05:00
 #draft = true
 +++
 
-In the previous part, we walked through setting up a basic Go project using a nix flake. We setup our development environment with a devShell. Now, let's dive into the process of building and running this project using the Nix Flake.
+In the previous part, we walked through setting up a basic Go project using a Nix flake. We setup our development environment with a devShell. Now, let's dive into the process of building and running this project using the Nix Flake.
 
 ## Building the Project
 
-Now that we have meticulously set up our development environment using the Nix Flake, the next crucial step is to build our Go project. In this section, we'll walk through the process of constructing the project, leveraging the capabilities of Nix to ensure a reliable and reproducible build. Let's dive into the details of how the Nix Flake orchestrates the build process for our Go project.
+Now that we have meticulously set up our development environment using the Nix Flake, the next crucial step is to build our Go project. In this section, we'll walk through the process of compiling the project, leveraging the capabilities of Nix to ensure a reliable and reproducible build. Let's dive into the details of how the Nix Flake orchestrates the build process for our Go project.
 
 ```nix
 {
@@ -87,7 +87,7 @@ In summary, this section defines how to create a Nix derivation for the Go proje
 
 ## Examining the Build Output
 
-After a successful build, it's essential to understand the conventions of Nix. The result symlink, which you'll find in the project directory, is a standard mechanism in Nix for conveniently accessing the outputs of the build. This symlink points directly to the directory containing the build results, providing a straightforward way to locate and utilize the compiled artifacts of your Go project. Let's take a moment to explore how this standard convention simplifies the examination and utilization of the build output.
+After a successful build, it's essential to understand the conventions of Nix. The result symlink, which you'll find Nix has generated in the project directory, is a standard mechanism in Nix for conveniently accessing the outputs of the build. This symlink points directly to the directory containing the build results, providing a straightforward way to locate and utilize the compiled artifacts of your Go project. Let's take a moment to explore how this standard convention simplifies the examination and utilization of the build output.
 ```bash
 ls -l result
 ```
@@ -113,4 +113,4 @@ Nix Flakes, in this context, emerge as a powerful tool for streamlining the shar
 
 This focus on reproducibility and consistency is especially vital during the build phase, where discrepancies can lead to unforeseen issues. By leveraging Nix Flakes, developers gain a robust framework for managing dependencies and architecting a build workflow that remains impervious to the inconsistencies that often plague software projects.
 
-As we delve deeper into the capabilities of Nix Flakes, let's appreciate the transformative impact they bring to the build process. In the upcoming parts of this series, we will continue our exploration, extending our understanding to additional aspects such as Continuous Integration (CI) and the seamless integration of Nix Flakes in Docker containers. Stay tuned for a more comprehensive journey into the versatile world of Nix Flakes.
+As we delve deeper into the capabilities of Nix Flakes, let's appreciate the transformative impact they bring to the build process. In the upcoming parts of this series, we will continue our exploration, extending our understanding to additional aspects such as Continuous Integration (CI). Stay tuned for a more comprehensive journey into the versatile world of Nix Flakes.
