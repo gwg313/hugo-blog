@@ -8,7 +8,7 @@ Hey there, tech pals! I'm Glen, and you've stumbled upon my little corner of the
 
 ## Tech Enthusiast
 
-I'm dedicated to maximizing the utility and enjoyment of technology. Whether immersed in Linux, refining my Neovim setup, or exploring automation tools, with a passion for seamless and personalized tech experience. I'm also passionate about crafting keyboards, merging aesthetics with functionality.
+I'm dedicated to maximizing the utility and enjoyment of technology. Whether immersed in Linux, refining my Neovim setup, or exploring automation tools, with a passion for seamless and personalized tech experience.
 
 ## Fun with Keyboards
 I enjoy building custom keyboards as a hobby and passion, using QMK and ZMK to enhance the typing experience. Explore my [keyboard configs on GitHub](https://github.com/gwg313/zmk-configs)
@@ -21,6 +21,6 @@ Life's more than just lines of code, isn't it? When I'm not immersed in tech, yo
 
 For those curious about the tech under my hood, my NixOS configurations are an open book. Swing by [GitHub](https://github.com/gwg313/nixos-config) if you want to dive into the nitty-gritty.
 
-## Let's Tech & Chill
+## Let's Tech
 
 This blog is my space to share the wild ride of tech discoveries, aha moments, and everything in between. Whether you're a coding ninja or just tech-curious, pull up a virtual chair.
