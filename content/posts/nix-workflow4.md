@@ -108,7 +108,7 @@ First lets update the devShell in our flake to include golint.
         defaultPackage.${system} = pkgs.stdenv.mkDerivation {
           name = "my-go-project";
           src = ./.;
-          buildInputs = [ pkgs.go ];
+          buildInputs = with pkgs; [ go ];
           buildPhase = ''
             export GOCACHE=$TMPDIR/go-cache
             mkdir -p $TMPDIR/go-cache
@@ -231,7 +231,7 @@ The flake will now look like this
         defaultPackage.${system} = pkgs.stdenv.mkDerivation {
           name = "a-go-example";
           src = ./.;
-          buildInputs = [ pkgs.go ];
+          buildInputs = with pkgs; [ go ];
           buildPhase = ''
             export GOCACHE=$TMPDIR/go-cache
             mkdir -p $TMPDIR/go-cache
@@ -437,7 +437,7 @@ the resulting flake should look like this
         defaultPackage.${system} = pkgs.stdenv.mkDerivation {
           name = "a-go-example";
           src = ./.;
-          buildInputs = [ pkgs.go ];
+          buildInputs = with pkgs; [ go ];
           buildPhase = ''
             export GOCACHE=$TMPDIR/go-cache
             mkdir -p $TMPDIR/go-cache

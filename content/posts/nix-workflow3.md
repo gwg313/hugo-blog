@@ -45,7 +45,7 @@ Now that we have meticulously set up our development environment using the Nix F
         defaultPackage.${system} = pkgs.stdenv.mkDerivation {
           name = "my-go-project";
           src = ./.;
-          buildInputs = [ pkgs.go ];
+          buildInputs = with pkgs; [ go ];
           buildPhase = ''
             export GOCACHE=$TMPDIR/go-cache
             mkdir -p $TMPDIR/go-cache

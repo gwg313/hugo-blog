@@ -22,7 +22,7 @@ The integration of devShell with Flakes is all about precision in Nix workflows.
 
 ## Creating a Simple devShell within a Flake:
 
-So to get a better idea for how this works in practice, lets construct an example(You will need the nix package manager installed).
+So to get a better idea for how this works in practice, lets construct an example, you will need the nix package manager installed to follow along. If you would like to see the final code including what I cover in the following parts you find it [here](https://github.com/gwg313/blog-go-example).
 
 ### Step 1: Project Setup:
 Navigate to your project directory.
@@ -72,13 +72,13 @@ Create a file named flake.nix in your project directory.
 Lets briefly cover the components,
 
 1. **Nixpkgs Input:**
-   The `inputs.nixpkgs.url` specifies the Nixpkgs Flake input, referencing the GitHub repository and setting the reference to `nixos-unstable`.
+   The `inputs.nixpkgs.url` specifies the Nixpkgs Flake input, referencing the GitHub repository and setting the reference to `nixos-unstable`. This is where we get our packages from.
 
 2. **Outputs Definition:**
    The `outputs` function defines the Flake's outputs, utilizing `nixpkgs` as an argument.
 
 3. **withSystem Function:**
-   The `withSystem` function takes a function `f` and applies it to a list of systems, including "x86_64-linux," "x86_64-darwin," "aarch64-linux," and "aarch64-darwin."
+   The `withSystem` function takes a function `f` and applies it to a list of systems, including "x86_64-linux," "x86_64-darwin," "aarch64-linux," and "aarch64-darwin". This lets us utilize the flake on many system architectures.
 
 4. **Fold and recursiveUpdate:**
    It employs `fold` and `recursiveUpdate` to combine results, facilitating usage on multiple system architectures, such as Apple Silicon.
